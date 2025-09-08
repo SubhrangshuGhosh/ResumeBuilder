@@ -1,0 +1,708 @@
+/* Dashboard.css - Dark Theme */
+.dashboard-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, 
+    #1a1a2e 0%, 
+    #16213e 25%, 
+    #0f3460 50%, 
+    #1a1a2e 75%, 
+    #16213e 100%);
+  background-size: 400% 400%;
+  animation: gradientBackground 15s ease infinite;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes gradientBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Animated background elements */
+.dashboard-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.03) 2px, transparent 2px);
+  background-size: 50px 50px, 100px 100px;
+  animation: float 20s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-50px, -50px) rotate(360deg); }
+}
+
+/* Top Navigation Bar - Enhanced with great colors and shadow */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  height: 75px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 2px 10px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-left .logo {
+  color: white;
+  font-size: 24px;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, 
+    #ffffff 0%, 
+    #a8c0ff 50%, 
+    #3f5efb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-center {
+  flex: 1;
+  max-width: 450px;
+  margin: 0 30px;
+  position: relative;
+  z-index: 201;
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 14px 20px;
+  padding-left: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 25px;
+  background: rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  color: #ffffff;
+  box-shadow: 
+    inset 0 2px 5px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-bar input:focus {
+  outline: none;
+  background: rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    inset 0 2px 8px rgba(0, 0, 0, 0.25), 
+    0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 18px;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon-button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.icon-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.mobile-menu {
+  display: none;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-search {
+  margin-bottom: 20px;
+}
+
+.mobile-search input {
+  width: 100%;
+  padding: 14px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 25px;
+  background: rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+}
+
+.mobile-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mobile-notification, .mobile-account {
+  padding: 12px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-notification:hover, .mobile-account:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar - Enhanced with gradient and shadow */
+.sidebar {
+  width: 250px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(15px);
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.3s ease;
+  z-index: 10;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+/* Mobile visibility class - ensures sidebar is always visible on mobile */
+.sidebar.mobile-visible {
+  left: 0 !important;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 25px 0;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  flex: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  display: flex;
+  align-items: center;
+  padding: 18px 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  position: relative;
+}
+
+.sidebar-nav li:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-nav li.active {
+  background: rgba(255, 255, 255, 0.15);
+  border-left: 4px solid #a8c0ff;
+}
+
+.nav-icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Ensure SVG icons are properly sized and maintain size when collapsed */
+.nav-icon svg {
+  width: 100%;
+  height: 100%;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+/* When sidebar is collapsed, center the icons and maintain their size */
+.sidebar.collapsed .nav-icon {
+  margin-right: 0;
+  width: 32px;
+  height: 32px;
+}
+
+.sidebar.collapsed .nav-text {
+  display: none;
+}
+
+.logout-section {
+  padding: 20px 25px;
+  margin-top: auto;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px;
+  background: rgb(255, 0, 0);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logout-btn:hover {
+  background: rgb(156, 1, 1);
+  /* transform: translateY(-2px); */
+}
+
+.sidebar-toggle {
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  color: #1a1a2e;
+  font-weight: bold;
+  z-index: 20;
+}
+
+.sidebar-toggle:hover {
+  transform: scale(1.1) translateY(-50%);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: margin-left 0.3s ease;
+}
+
+.content-area {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.content-area h2 {
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 28px;
+}
+
+.content-area p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Search bar enhancements */
+.clear-search-btn {
+  position: absolute;
+  right: 15px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 20px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.clear-search-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Search results dropdown */
+.search-results-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 200;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: none;
+}
+
+.search-results-header {
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.search-results-list {
+  padding: 10px 0;
+}
+
+.search-result-item {
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.search-result-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.result-name {
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.result-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.template-badge {
+  background: linear-gradient(135deg, #4a6cf7 0%, #3f5efb 100%);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 15px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.result-date {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 11px;
+}
+
+.no-results {
+  padding: 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive Design - Mobile Optimization */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 80px;
+  }
+  
+  .nav-text {
+    display: none;
+  }
+  
+  .sidebar.collapsed {
+    width: 80px;
+  }
+  
+  .sidebar-toggle {
+    display: none;
+  }
+  
+  /* Center icons in collapsed sidebar */
+  .sidebar.collapsed .sidebar-nav li {
+    justify-content: center;
+    padding: 20px 15px;
+  }
+  
+  .nav-icon {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-center {
+    display: none;
+  }
+  
+  .icon-button {
+    display: none;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+  
+  .mobile-menu {
+    display: block;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    right: 0;
+    z-index: 200;
+  }
+  
+  /* Mobile Sidebar Styles - Icons only, always visible */
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 75px;
+    bottom: 0;
+    width: 70px;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+  }
+  
+  /* Ensure sidebar is always visible on mobile */
+  .sidebar.mobile-visible {
+    left: 0 !important;
+  }
+  
+  .sidebar.collapsed {
+    width: 70px;
+  }
+  
+  .sidebar-toggle {
+    display: none;
+  }
+  
+  .main-content {
+    margin-left: 70px;
+    padding: 20px 15px;
+  }
+  
+  /* Hide text in logout button on mobile */
+  .logout-btn .nav-text {
+    display: none;
+  }
+  
+  .logout-btn {
+    justify-content: center;
+    padding: 15px;
+  }
+  
+  /* Adjust content when sidebar is visible */
+  .sidebar + .main-content {
+    margin-left: 70px;
+  }
+  
+  /* Larger icons on mobile */
+  .nav-icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .sidebar-nav li {
+    padding: 20px 15px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-nav {
+    padding: 0 20px;
+  }
+  
+  .logo {
+    font-size: 20px;
+  }
+  
+  .main-content {
+    padding: 15px 10px;
+    margin-left: 60px;
+  }
+  
+  .content-area {
+    padding: 20px;
+  }
+  
+  .sidebar {
+    width: 60px;
+  }
+  
+  .sidebar.collapsed {
+    width: 60px;
+  }
+  
+  .sidebar-nav li {
+    padding: 18px 12px;
+  }
+  
+  .nav-icon {
+    width: 26px;
+    height: 26px;
+  }
+  
+  /* Mobile search adjustments */
+  .search-results-dropdown {
+    left: 10px;
+    right: 10px;
+    width: auto;
+  }
+  
+  .search-bar input {
+    font-size: 16px;
+  }
+}
+
+/* Ensure SVG icons are visible and properly styled */
+.icon-button svg,
+.search-icon svg,
+.nav-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Specific styling for SVG elements */
+.icon-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.search-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-container,
+  .dashboard-container::before,
+  .icon-button,
+  .sidebar-nav li,
+  .logout-btn,
+  .sidebar-toggle,
+  .search-result-item {
+    animation: none;
+    transition: none;
+  }
+}
