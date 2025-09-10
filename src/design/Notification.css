@@ -1,0 +1,127 @@
+.notification-page {
+  padding: 20px;
+  background-color: #f8fafc;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.notification-container {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.notification-header {
+  padding: 20px;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #f1f5f9;
+}
+
+.notification-header h2 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.notification-content {
+  padding: 30px 20px;
+}
+
+.no-notification-box {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.notification-icon {
+  margin-bottom: 20px;
+}
+
+.no-notification-box h3 {
+  margin: 0 0 10px 0;
+  color: #374151;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.no-notification-box p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.premium-section {
+  text-align: center;
+  padding: 25px;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-radius: 8px;
+  border: 1px solid #bae6fd;
+}
+
+.premium-section h4 {
+  margin: 0 0 10px 0;
+  color: #0369a1;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.premium-section p {
+  margin: 0 0 20px 0;
+  color: #0c4a6e;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.upgrade-btn {
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(6, 84, 109, 0.2);
+}
+
+.upgrade-btn:hover {
+  background: linear-gradient(135deg, #0e7490 0%, #155e75 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(6, 84, 109, 0.3);
+}
+
+.upgrade-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .notification-page {
+    padding: 10px;
+  }
+  
+  .notification-container {
+    border-radius: 8px;
+  }
+  
+  .notification-header {
+    padding: 15px;
+  }
+  
+  .notification-content {
+    padding: 20px 15px;
+  }
+  
+  .no-notification-box {
+    padding: 30px 15px;
+  }
+}

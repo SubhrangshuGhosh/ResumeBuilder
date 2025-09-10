@@ -3,6 +3,8 @@ import '../design/Dashboard.css';
 import NewResume from '../pages/NewResume';
 import EditResume from '../pages/EditResume';
 import SavedResume from '../pages/SavedResume';
+import Notification from '../pages/Notification';
+import Account from '../pages/Account';
 
 const Dashboard = () => {
   const [activeContent, setActiveContent] = useState('newResume');
@@ -94,7 +96,6 @@ const Dashboard = () => {
     setActiveContent('savedResume');
     setSearchQuery('');
     setShowSearchResults(false);
-    
   };
 
   const renderContent = () => {
@@ -105,6 +106,10 @@ const Dashboard = () => {
         return <EditResume />;
       case 'savedResume':
         return <SavedResume />;
+      case 'notification':
+        return <Notification />;
+      case 'account':
+        return <Account />;
       default:
         return <NewResume />;
     }
@@ -178,7 +183,10 @@ const Dashboard = () => {
         
         <div className="nav-right">
           {/* Notification SVG */}
-          <div className="icon-button notification">
+          <div 
+            className={`icon-button notification ${activeContent === 'notification' ? 'active' : ''}`}
+            onClick={() => handleNavItemClick('notification')}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none">
               <path d="M22 5.5C22 7.433 20.433 9 18.5 9C16.567 9 15 7.433 15 5.5C15 3.567 16.567 2 18.5 2C20.433 2 22 3.567 22 5.5Z" stroke="#ffffff" strokeWidth="1.5"></path>
               <path d="M21.9506 11C21.9833 11.3289 22 11.6625 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C12.3375 2 12.6711 2.01672 13 2.04938" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round"></path>
@@ -189,7 +197,10 @@ const Dashboard = () => {
           </div>
           
           {/* Account SVG */}
-          <div className="icon-button account">
+          <div 
+            className={`icon-button account ${activeContent === 'account' ? 'active' : ''}`}
+            onClick={() => handleNavItemClick('account')}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none">
               <path d="M15 9C15 7.34315 13.6569 6 12 6C10.3431 6 9 7.34315 9 9C9 10.6569 10.3431 12 12 12C13.6569 12 15 10.6569 15 9Z" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
               <path d="M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
@@ -230,10 +241,18 @@ const Dashboard = () => {
             <input type="text" placeholder="Search resumes..." />
           </div>
           <div className="mobile-menu-items">
-            <div className="mobile-notification">
+            <div 
+              className={`mobile-notification ${activeContent === 'notification' ? 'active' : ''}`}
+              onClick={() => handleNavItemClick('notification')}
+            >
               Notifications <span className="badge">3</span>
             </div>
-            <div className="mobile-account">My Account</div>
+            <div 
+              className={`mobile-account ${activeContent === 'account' ? 'active' : ''}`}
+              onClick={() => handleNavItemClick('account')}
+            >
+              My Account
+            </div>
           </div>
         </div>
       )}
